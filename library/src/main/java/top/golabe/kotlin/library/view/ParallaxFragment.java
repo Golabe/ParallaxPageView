@@ -22,8 +22,6 @@ public class ParallaxFragment extends Fragment {
         fragments.add(view);
         return view;
     }
-
-
     public List<View> getParallaxViews() {
         return this.fragments;
     }

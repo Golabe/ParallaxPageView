@@ -10,8 +10,7 @@ import android.widget.RelativeLayout;
 import top.golabe.kotlin.library.R;
 
 public class ParallaxPageContainer extends RelativeLayout {
-
-
+    public static final int DEFAULT_VALUE=0x000101;
 
     public ParallaxPageContainer(Context context) {
         this(context, null);
@@ -41,7 +40,6 @@ public class ParallaxPageContainer extends RelativeLayout {
         ContainerLayoutParams lp = (ContainerLayoutParams) params;
 
         if (isAddLayoutParams(lp)) {
-
             WrapContentView view = new WrapContentView(getContext());
             view.setAlphaIn(lp.alphaIn);
             view.setAlphaOut(lp.alphaOut);
@@ -60,13 +58,18 @@ public class ParallaxPageContainer extends RelativeLayout {
     }
 
     private boolean isAddLayoutParams(ContainerLayoutParams lp) {
-        return lp.alphaOut != -1 || lp.alphaIn != -1 || lp.xOut != -1 || lp.xIn != -1 || lp.yOut != -1 || lp.yIn != -1;
+        return lp.alphaOut ||
+                lp.alphaIn ||
+                lp.xOut != DEFAULT_VALUE ||
+                lp.xIn != DEFAULT_VALUE ||
+                lp.yOut != DEFAULT_VALUE ||
+                lp.yIn != DEFAULT_VALUE;
     }
 
 
     private static class ContainerLayoutParams extends LayoutParams {
-        private float alphaIn;
-        private float alphaOut;
+        private boolean alphaIn;
+        private boolean alphaOut;
         private float xIn;
         private float xOut;
         private float yIn;
@@ -77,12 +80,12 @@ public class ParallaxPageContainer extends RelativeLayout {
 
             if (attrs != null) {
                 TypedArray a = c.obtainStyledAttributes(attrs, R.styleable.ParallaxPageContainer);
-                alphaIn = a.getFloat(R.styleable.ParallaxPageContainer_a_in, -1F);
-                alphaOut = a.getFloat(R.styleable.ParallaxPageContainer_a_out, -1F);
-                xIn = a.getFloat(R.styleable.ParallaxPageContainer_x_in, -1F);
-                xOut = a.getFloat(R.styleable.ParallaxPageContainer_x_out, -1F);
-                yIn = a.getFloat(R.styleable.ParallaxPageContainer_y_in, -1F);
-                yOut = a.getFloat(R.styleable.ParallaxPageContainer_y_out, -1F);
+                alphaIn = a.getBoolean(R.styleable.ParallaxPageContainer_a_in, false);
+                alphaOut = a.getBoolean(R.styleable.ParallaxPageContainer_a_out, false);
+                xIn = a.getFloat(R.styleable.ParallaxPageContainer_x_in, DEFAULT_VALUE);
+                xOut = a.getFloat(R.styleable.ParallaxPageContainer_x_out, DEFAULT_VALUE);
+                yIn = a.getFloat(R.styleable.ParallaxPageContainer_y_in, DEFAULT_VALUE);
+                yOut = a.getFloat(R.styleable.ParallaxPageContainer_y_out, DEFAULT_VALUE);
                 a.recycle();
             }
 

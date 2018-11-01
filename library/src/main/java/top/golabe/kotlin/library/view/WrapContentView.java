@@ -7,22 +7,24 @@ import android.widget.FrameLayout;
 
 import top.golabe.kotlin.library.interfaces.IWrapContainer;
 
+import static top.golabe.kotlin.library.view.ParallaxPageContainer.DEFAULT_VALUE;
+
 public class WrapContentView extends FrameLayout implements IWrapContainer {
     private static final String TAG = "WrapContentView";
-    private float alphaIn;
-    private float alphaOut;
+    private boolean alphaIn;
+    private boolean alphaOut;
     private float xIn;
     private float xOut;
     private float yIn;
     private float yOut;
 
 
-    public void setAlphaIn(float alphaIn) {
+    public void setAlphaIn(boolean alphaIn) {
         this.alphaIn = alphaIn;
     }
 
 
-    public void setAlphaOut(float alphaOut) {
+    public void setAlphaOut(boolean alphaOut) {
         this.alphaOut = alphaOut;
     }
 
@@ -64,7 +66,7 @@ public class WrapContentView extends FrameLayout implements IWrapContainer {
     @Override
     public void onTranslationInX(float x) {
 
-        if (xIn != -1) {
+        if (xIn != DEFAULT_VALUE) {
             setTranslationX(xIn * x);
         }
 
@@ -73,37 +75,42 @@ public class WrapContentView extends FrameLayout implements IWrapContainer {
 
     @Override
     public void onTranslationInY(float y) {
-        if (yIn != -1) {
+        if (yIn != DEFAULT_VALUE) {
             setTranslationY(yIn * y);
         }
     }
 
     @Override
     public void onTranslationOutX(float x) {
-        if (xOut != -1) {
+        if (xOut != DEFAULT_VALUE) {
             setTranslationX(xOut * x);
         }
     }
 
     @Override
     public void onTranslationOutY(float y) {
-        if (yOut != -1) {
+        if (yOut != DEFAULT_VALUE) {
             setTranslationY(yOut * y);
         }
     }
 
     @Override
     public void onAlphaIn(float a) {
-//        if (alphaIn != -1) {
-//            setAlpha(a * alphaIn);
-//            Log.d(TAG, "onAlphaIn: "+a*alphaIn);
-//        }
+        if (alphaIn) {
+            if (a<=1&&a>=0){
+                setAlpha(a);
+            }
+
+        }
     }
+
     @Override
     public void onAlphaOut(float a) {
-//        if (alphaOut != -1) {
-//            Log.d(TAG, "onAlphaOut: "+a*alphaOut);
-//            setAlpha(a * alphaOut);
-//        }
+        if (alphaOut) {
+            if (a <= 1 && a >= 0) {
+                setAlpha(1 - a);
+            }
+
+        }
     }
 }

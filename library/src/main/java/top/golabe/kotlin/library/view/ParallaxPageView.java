@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -57,7 +58,7 @@ public class ParallaxPageView extends ViewPager {
 
             ParallaxFragment inFragment = null;
             try {
-                inFragment = mFragments.get(position - 1);
+                inFragment = mFragments.get(position -1);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -102,7 +103,7 @@ public class ParallaxPageView extends ViewPager {
                         if (container!=null){
                             container.onTranslationOutY(0 - positionOffsetPixels);
                             container.onTranslationOutX(0 - positionOffsetPixels);
-                            container.onAlphaOut(0-positionOffsetPixels);
+                            container.onAlphaOut(positionOffsetPixels/(float)containerWidth);
                         }
                     }
 
@@ -126,7 +127,7 @@ public class ParallaxPageView extends ViewPager {
                         if (container!=null){
                             container.onTranslationInY(containerWidth - positionOffsetPixels);
                             container.onTranslationInX(containerWidth - positionOffsetPixels);
-                            container.onAlphaIn(containerWidth-positionOffsetPixels);
+                            container.onAlphaIn(positionOffsetPixels/(float)containerWidth);
                         }
                     }
 

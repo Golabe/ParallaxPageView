@@ -9,8 +9,8 @@
     <!--<attr name="y_out" format="float" />-->
 
     <declare-styleable name="ParallaxPageContainer">
-        <attr name="a_in" format="float" />
-        <attr name="a_out" format="float" />
+        <attr name="a_in" format="boolean" />
+        <attr name="a_out" format="boolean" />
         <attr name="x_in" format="float" />
         <attr name="x_out" format="float" />
         <attr name="y_in" format="float" />
