@@ -2,7 +2,6 @@ package top.golabe.kotlin.library.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.widget.FrameLayout;
 
 import top.golabe.kotlin.library.interfaces.IWrapContainer;
@@ -48,7 +47,6 @@ public class WrapContentView extends FrameLayout implements IWrapContainer {
         this.yOut = yOut;
     }
 
-
     public WrapContentView(Context context) {
         super(context);
     }
@@ -62,14 +60,12 @@ public class WrapContentView extends FrameLayout implements IWrapContainer {
         super.onSizeChanged(w, h, oldw, oldh);
     }
 
-
     @Override
     public void onTranslationInX(float x) {
 
         if (xIn != DEFAULT_VALUE) {
             setTranslationX(xIn * x);
         }
-
 
     }
 
@@ -97,10 +93,9 @@ public class WrapContentView extends FrameLayout implements IWrapContainer {
     @Override
     public void onAlphaIn(float a) {
         if (alphaIn) {
-            if (a<=1&&a>=0){
+            if (a <= 1 && a >= 0) {
                 setAlpha(a);
             }
-
         }
     }
 
