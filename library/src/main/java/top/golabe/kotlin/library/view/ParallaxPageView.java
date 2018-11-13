@@ -44,7 +44,6 @@ public class ParallaxPageView extends ViewPager {
         }
 
         mParallaxPageAdapter = new ParallaxPageAdapter(((FragmentActivity) getContext()).getSupportFragmentManager(), mFragments);
-        setId(R.id.parallax_pager);
         setAdapter(mParallaxPageAdapter);
         addOnPageChangeListener(onPageChangeListener);
     }
@@ -96,7 +95,6 @@ public class ParallaxPageView extends ViewPager {
                     if (!(view instanceof ParallaxPageContainer)){
                         continue;
                     }
-
                     for (int i = 0; i < ((ParallaxPageContainer) view).getChildCount(); i++) {
                         View childView = ((ParallaxPageContainer) view).getChildAt(i);
                         IWrapContainer container = (IWrapContainer) childView;

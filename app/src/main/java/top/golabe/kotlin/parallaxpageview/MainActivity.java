@@ -14,8 +14,9 @@ public class MainActivity extends AppCompatActivity {
         container.setup(new int[]{R.layout.fragment_1
                 , R.layout.fragment_2
                 , R.layout.fragment_3
-                , R.layout.fragment_5
-                , R.layout.fragment_4});
+                , R.layout.fragment_4
+                , R.layout.fragment_5,
+                R.layout.fragment_1});
 
     }
 }
