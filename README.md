@@ -1,4 +1,8 @@
 # ParallaxPageView(视察动画ViewPager)
+## Gradle
+```xml
+implementation 'top.golabe.ParallaxPageView:library:1.0.1'
+```
 
 ## XML  用ParallaxPageContainer 作为Fragment布局的父布容器
 ```xml
